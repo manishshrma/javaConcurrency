@@ -6,9 +6,24 @@ public class Grouping {
         //main thread group
         ThreadGroup g1=new ThreadGroup("firstGroup");
         System.out.println(g1.getName());
-        //this thread present in firstgroup
+
+        //this threadgroup will be add as child of g1(parent threadgroup) present in firstgroup
         ThreadGroup g2=new ThreadGroup(g1,"secondGroup");
-        System.out.println(g2.getName());
+        System.out.println(g2.getParent().getName());
+
+        /////////////thread prioriy in thread group//////////////////////////////
+
+        ThreadGroup gp=new ThreadGroup("mygroup");//-- have MAX_priority is 10
+        Thread t1=new Thread(gp,"thread-0"); // now priority--5
+        Thread t2=new Thread(gp,"thread-1");// now priority --5
+        //set the thredgroup priority
+        gp.setMaxPriority(3); // setted new priority
+        Thread t3=new Thread(g1,"thread-3");
+
+        System.out.println(t1.getPriority());
+        System.out.println(t2.getPriority());
+        System.out.println(t3.getPriority());
+
 
     }
 }
