@@ -10,7 +10,6 @@ public class MyThread extends Thread {
     MyThread(String name) {
         this.name = name;
     }
-
     @Override
     public void run() {
         if (l.tryLock()) {
