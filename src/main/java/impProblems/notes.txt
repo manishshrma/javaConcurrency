@@ -1,0 +1,1 @@
+https://stackoverflow.com/questions/3403030/java-synchronized-blocks  ==> VIMP LINK for sync

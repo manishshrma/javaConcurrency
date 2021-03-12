@@ -1,4 +1,4 @@
-package org.tryout;
+package impProblems.problem1;
 
 
 public class Thread2 extends Thread {
