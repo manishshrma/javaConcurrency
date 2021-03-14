@@ -1,23 +1,42 @@
 package org.PDclassicProblem;
 
 import java.util.LinkedList;
+import java.util.List;
 
 //consumer thread
-public class Consumer<T> {
+public class Consumer<T> extends Thread {
 
-     LinkedList<T> queue;
-    int capacity = 5;
+    private final List<Integer> taskQueue;
 
-    public void consume() throws InterruptedException {
-        synchronized (queue) {
-            if (queue.isEmpty()) {
-                System.out.println("queue is empty. Wait untill producer put some data in queue");
-                queue.wait();
+    Consumer(List<Integer> taskQueue) {
+        this.taskQueue = taskQueue;
+
+    }
+
+    @Override
+    public void run() {
+
+        while (true) {
+            try {
+                consume();
+            } catch (InterruptedException ie) {
+                ie.printStackTrace();
             }
-            else{
-                T out=queue.remove(0);
-                System.out.println(out);
+        }
+    }
+
+    private void consume() throws InterruptedException {
+        synchronized (taskQueue) {
+
+            while(taskQueue.isEmpty()){
+                System.out.println("taskQueue is empty..wait for adding items");
+                taskQueue.wait();
             }
+            Thread.sleep(100);
+           int removal= taskQueue.remove(0);
+            System.out.println("consumed.. "+removal);
+            taskQueue.notifyAll();
+
 
         }
     }

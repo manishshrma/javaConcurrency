@@ -1,6 +1,5 @@
 package impProblems.problem1;
 
-
 public class Thread2 extends Thread {
     @Override
     public void run() {
@@ -13,11 +12,8 @@ public class Thread2 extends Thread {
             for (int i = 10; i < 14; i++)
                 System.out.println(i);
         }
-
         m2();
-
     }
-
     public void m2() {
         System.out.println("method m2");
     }
