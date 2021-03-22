@@ -1,0 +1,14 @@
+creating 10 threads for 10 independent jobs to be performed, may generate memory utilizaton issues.
+Thus instead create ThreadPool.
+ThreadPool have already created threads in the pool.ThreadPool framework AKA Executor Framework.
+
+ExecutorService service=Executors.newFixedThreadPool(3)- this line created a pool of 3 thread.
+Now, submit a job to this executor framework
+service.submit(job) -job here is runnable job
+After completing the job, shutdown the executor service
+service.shutdown() - shutdown the service.
+
+Note Thread run method never return anything, if want to return the Object use Callable instead of runnable
+and call instead of run method.
+
+*Future object to hold the return value from call() method inside the thread implementing callable.
